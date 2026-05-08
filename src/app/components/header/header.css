@@ -1,0 +1,17 @@
+.navbar-brand{
+    font-size: 25px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgb(88, 88, 88);
+}
+.nav-link{
+    font-family:Arial, Helvetica, sans-serif;
+    display: inline-block;
+    font-weight: 600;
+    transition: 0.3s ease;
+    
+}
+.nav-link:hover{
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    transform: scale(1.2);
+}

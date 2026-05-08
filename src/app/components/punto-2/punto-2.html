@@ -1,0 +1,53 @@
+<div class="boton-carrito mt-4">
+    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#carrito-compras">
+        <i class="bi bi-cart4"> Ver carrito</i>
+    </button>
+</div>
+<!-- modal -->
+<div class="modal" tabindex="-1" id="carrito-compras">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Productos agregados al carrito</p>
+                <div class="productos" *ngFor="let c of carrito">
+                    <ul class="list-group list-group-flush">
+                        <h5>{{c.nombre}}</h5>
+                        <li class="list-group-item">{{c.precio | currency}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="total-container ms-3">
+                <hr>
+                <h4>Total: {{calcularTotal() | currency }}</h4>
+            </div>
+            <div class="modal-footer">
+                <button (click)="vaciarCarrito()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Vaciar carrito</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- --------- -->
+<div class="row">
+    <div class="col-md-4 mb-4 mt-5" *ngFor="let p of productos">
+        <div class="card h-100">
+            <img [src]="p.img" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{p.nombre}}</h5>
+                <p class="card-text">{{p.descripcion}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{p.precio | currency}}</li>
+            </ul>
+            <div class="button-container">
+                <button (click)="agregarAlCarrito(p)" type="button" class="btn btn-outline-primary">Agregar</button>
+                <!-- boton (click) llama a la funcion agregarAlCarrito, al hacer push agrega el objeto al array carrito -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <img [src]="eventos[indice].img" class="img-fluid"> -->

@@ -1,0 +1,22 @@
+.container h2{
+    font-weight: 600;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.container p{
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+}
+.container img{
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 40px;
+    transition: transform 0.3s ease;
+}
+
+.container img:hover{
+    transform: scale(0.97);
+}
+.boton-container .btn{
+    margin: 6px;
+}
