@@ -1,0 +1,23 @@
+<div class="container mt-4 text-center">
+  <h3>{{ titulo }}</h3>
+  
+  <div class="mb-3">
+    <button class="btn btn-success me-2" (click)="iniciarJuego()" [disabled]="juegoIniciado">INICIAR</button>
+    <button class="btn btn-danger" (click)="reiniciarJuego()">REINICIAR</button>
+  </div>
+
+  <!-- Panel de control -->
+  <div class="alert alert-dark shadow-sm" *ngIf="juegoIniciado">
+    <p class="mb-1">Intentos Disponibles: <strong>{{ intentosDisponibles }}</strong></p>
+    <!-- ESTE BOTÓN ES EL QUE "PRENDE" EL CLIC DE LAS CARTAS -->
+    <button class="btn btn-warning fw-bold" (click)="activarIntento()">INTENTAR</button>
+   </div>
+
+  <!-- El tablero 4x3 -->
+  <div class="row row-cols-4 g-3 mx-auto" style="max-width: 480px;">
+    <div *ngFor="let carta of cartas; trackBy: trackByCarta" class="col">
+     <div class="carta-box border" (click)="gestionarClick(carta)">
+      <img [src]="carta.volteada ? carta.url : 'assets/pregunta.png'" 
+       class="img-fluid rounded carta-img">
+     </div>
+</div>

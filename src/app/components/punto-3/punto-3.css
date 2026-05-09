@@ -1,0 +1,27 @@
+.carta-box {
+    
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #ddd;
+  aspect-ratio: 3 / 4;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   transition: transform 0.5s;
+   transform-style: preserve-3d;
+}
+
+.carta-box.volteada {
+  transform: rotateY(180deg);
+}
+/*.carta-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px;
+}
+
+/* 🔥 CLAVE: NO forzar altura */
+.carta-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
