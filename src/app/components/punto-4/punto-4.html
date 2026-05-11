@@ -2,7 +2,7 @@
   <div class="card p-4 shadow">
     <h3>Inscripción a Cursos</h3>
     <form class="row g-3">
-      
+
       <div class="col-md-6">
         <label class="form-label">Email</label>
         <input type="email" class="form-control" [(ngModel)]="inscripcion.email" name="email">
@@ -12,18 +12,20 @@
         <label class="form-label">DNI</label>
         <input type="text" class="form-control" [(ngModel)]="inscripcion.dni" name="dni">
       </div>
-       <div class="col-md-4">
+      <div class="col-md-4">
         <label class="form-label">Curso</label>
         <input type="text" class="form-control" [(ngModel)]="inscripcion.curso" name="curso">
       </div>
       <div class="col-md-4">
         <label class="form-label">Precio del Curso</label>
-        <input type="number" class="form-control" [(ngModel)]="inscripcion.precio" name="precio" (change)="calcularTotal()">
+        <input type="number" class="form-control" [(ngModel)]="inscripcion.precio" name="precio"
+          (change)="calcularTotal()">
       </div>
 
       <div class="col-md-4">
         <label class="form-label">Categoría de Alumno</label>
-        <select class="form-select" [(ngModel)]="inscripcion.categoriaAlumno" name="categoria" (change)="calcularTotal()">
+        <select class="form-select" [(ngModel)]="inscripcion.categoriaAlumno" name="categoria"
+          (change)="calcularTotal()">
           <option value="" disabled>Seleccione...</option>
           <option value="1">Estudiante (35% OFF)</option>
           <option value="2">Egresado (50% OFF)</option>
@@ -79,4 +81,56 @@
       </tr>
     </tbody>
   </table>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card resumen-container mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Cantidad de estudiantes</h5>
+          <p class="card-text text-center">
+            {{cant_estudiantes}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card resumen-container mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Cantidad de egresados</h5>
+          <p class="card-text text-center">
+            {{cant_egresados}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card resumen-container mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Cantidad de particulares</h5>
+          <p class="card-text text-center">
+            {{cant_particulares}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card resumen-container mt-4">
+        <div class="card-body">
+          <h5 class="card-title">suma total</h5>
+          <p class="card-text text-center">
+            {{suma_total | currency:'ARS'}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card resumen-container mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Total de inscritos</h5>
+          <p class="card-text text-center">
+            {{totalInscritos}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

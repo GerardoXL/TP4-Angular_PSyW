@@ -5,4 +5,5 @@ export interface InscripcionModel{  //datos del alumno
     fechaInscripcion: string;
     email: string;
     curso: string;
+    precioFinal: number;
 }
