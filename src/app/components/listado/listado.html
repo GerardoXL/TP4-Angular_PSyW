@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <h3 class="text-primary mb-4 text-center">Gestión de Inscripciones</h3>
+
+  <div class="card shadow">
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>DNI</th>
+            <th>Curso</th>
+            <th>Email</th>
+            <th>Fecha</th>
+            <th>Precio Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ins of listaInscripciones">
+            <td>{{ ins.dni }}</td>
+            <td>{{ ins.curso }}</td>
+            <td>{{ ins.email }}</td>
+            <td>{{ ins.fechaInscripcion | date: 'dd/MM/yyyy' }}</td>
+            <td class="fw-bold">{{ ins.precio | currency:'ARS':'symbol-narrow':'1.2-2' }}</td>
+          </tr>
+          <tr *ngIf="listaInscripciones.length === 0">
+            <td colspan="5" class="text-center text-muted">No se encontraron inscripciones registradas.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-5 mx-auto">
+      <div class="card border-primary">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0 text-center">Resumen de Categorías</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Estudiantes (Cat 1)
+              <span class="badge bg-info rounded-pill">{{ contarPorCategoria(1) }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Egresados (Cat 2)
+              <span class="badge bg-success rounded-pill">{{ contarPorCategoria(2) }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Particulares (Cat 3)
+              <span class="badge bg-secondary rounded-pill">{{ contarPorCategoria(3) }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center fw-bold text-danger">
+              TOTAL GENERAL
+              <span>{{ totalGeneral | currency:'ARS' }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
