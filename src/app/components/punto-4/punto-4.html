@@ -1,1 +1,82 @@
-<p>punto-4 works!</p>
+<div class="container mt-4">
+  <div class="card p-4 shadow">
+    <h3>Inscripción a Cursos</h3>
+    <form class="row g-3">
+      
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="inscripcion.email" name="email">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">DNI</label>
+        <input type="text" class="form-control" [(ngModel)]="inscripcion.dni" name="dni">
+      </div>
+       <div class="col-md-4">
+        <label class="form-label">Curso</label>
+        <input type="text" class="form-control" [(ngModel)]="inscripcion.curso" name="curso">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Precio del Curso</label>
+        <input type="number" class="form-control" [(ngModel)]="inscripcion.precio" name="precio" (change)="calcularTotal()">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Categoría de Alumno</label>
+        <select class="form-select" [(ngModel)]="inscripcion.categoriaAlumno" name="categoria" (change)="calcularTotal()">
+          <option value="" disabled>Seleccione...</option>
+          <option value="1">Estudiante (35% OFF)</option>
+          <option value="2">Egresado (50% OFF)</option>
+          <option value="3">Particular</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-control" [(ngModel)]="inscripcion.fechaInscripcion" name="fecha">
+      </div>
+
+      <div class="col-12" *ngIf="inscripcion.precio > 0 && inscripcion.categoriaAlumno">
+        <div class="alert alert-info">
+          <label class="fw-bold">Total a Pagar: {{ totalCalculado | currency:'ARS':'symbol':'1.2-2' }}</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button type="button" class="btn btn-success w-100" (click)="registrar()">REGISTRAR</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h4>Listado de Inscripciones</h4>
+  <table class="table table-striped table-hover mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>DNI</th>
+        <th>Email</th>
+        <th>Curso</th>
+        <th>Categoría</th>
+        <th>Fecha</th>
+        <th>Precio Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaInscripciones">
+        <td>{{ item.dni }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.curso }}</td>
+        <td>
+          <span [ngSwitch]="item.categoriaAlumno">
+            <span *ngSwitchCase="'1'">Estudiante</span>
+            <span *ngSwitchCase="'2'">Egresado</span>
+            <span *ngSwitchCase="'3'">Particular</span>
+          </span>
+        </td>
+        <td>{{ item.fechaInscripcion | date:'dd/MM/yyyy' }}</td>
+        <td>{{ item.precioFinal | currency:'ARS' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
